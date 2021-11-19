@@ -1,14 +1,25 @@
 package me.devtarix.tproj;
 
-import java.util.HashSet;
-import java.util.Set;
+import me.devtarix.tproj.extensions.TestExt;
+
+import java.util.HashMap;
+import me.devtarix.tproj.extensions.TestExt;
 
 public class Extensions {
-
-    private static Set<Extenders> actives = new HashSet<>();
+    protected static HashMap<String, Extenders> registry = new HashMap<>();
 
     public static void ext(String[] args) {
         for (String ext:args) {
+            if (registry.containsKey(ext)) {
+                registry.get(ext).execute();
+            }
+            else {
+                System.out.println("There is no extension available called " + ext);
+                System.out.println("All the possible extensions are");
+                for (String l: registry.keySet()) {
+                    System.out.println(l);
+                }
+            }
         }
     }
 }

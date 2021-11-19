@@ -2,19 +2,35 @@ package me.devtarix.tproj;
 
 import java.util.List;
 
+import static me.devtarix.tproj.Utils.log;
+
 public abstract class Extenders {
 
     public String name;
     public List<String> description;
-    public Extenders e;
+    //private Extenders e = this;
 
-    public Extenders(String name, List<String> description, Extenders e) {
-        this.e =e;
-        this.description = description;
+    public Extenders(String name) {
+        Extensions.registry.put("-"+name, this);
+        log("Registered extension: " + name);
+        execute();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<String> getDescription() {
+        return description;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void register() {
-
+    public void setDescription(List<String> description) {
+        this.description = description;
     }
+
+    public abstract void execute();
 }
