@@ -6,7 +6,7 @@ import java.util.HashMap;
 import me.devtarix.tproj.extensions.TestExt;
 
 public class Extensions {
-    protected static HashMap<String, Extenders> registry = new HashMap<>();
+    protected static HashMap<String, Extended> registry = new HashMap<>();
 
     public static void ext(String[] args) {
         for (String ext:args) {

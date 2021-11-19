@@ -11,7 +11,6 @@ public abstract class Extenders {
     //private Extenders e = this;
 
     public Extenders(String name) {
-        Extensions.registry.put("-"+name, this);
         log("Registered extension: " + name);
         execute();
     }
