@@ -1,12 +1,8 @@
 package me.devtarix.tproj.extensions;
 
-import me.devtarix.tproj.Extended;
-import me.devtarix.tproj.Extenders;
+import me.devtarix.tproj.Extensions;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class TestExt implements Extended {
+public class TestExt implements Extensions {
     public TestExt() {
         registerAs("testext");
     }

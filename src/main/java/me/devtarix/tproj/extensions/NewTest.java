@@ -1,8 +1,8 @@
 package me.devtarix.tproj.extensions;
 
-import me.devtarix.tproj.Extended;
+import me.devtarix.tproj.Extensions;
 
-public class NewTest implements Extended {
+public class NewTest implements Extensions {
     NewTest() {
         registerAs("newtest");
     }
