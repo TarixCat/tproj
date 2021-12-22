@@ -3,6 +3,7 @@ package me.devtarix.tproj;
 public class Settings {
     private static Settings settings;
     public boolean guiActive = false;
+    public boolean commandInterpreterActive = true;
 
     private Settings() {
     }
@@ -21,5 +22,13 @@ public class Settings {
 
     public boolean isGuiActive() {
         return guiActive;
+    }
+
+    public void setCommandInterpreterActive(boolean commandInterpreterActive) {
+        this.commandInterpreterActive = commandInterpreterActive;
+    }
+
+    public boolean isCommandInterpreterActive() {
+        return commandInterpreterActive;
     }
 }
