@@ -1,8 +1,5 @@
 package me.devtarix.tproj.cmdutils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static me.devtarix.tproj.Utils.log;
 
 public interface Commands {
@@ -13,7 +10,10 @@ public interface Commands {
         return name;
     }
 
+    default void print(String msg) {
+        log(msg);
+    }
+
     void textCommand();
-    void textCommand(List args);
-    void guiCommand();
+    void textCommand(String[] args);
 }

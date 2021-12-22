@@ -3,19 +3,17 @@ package me.devtarix.tproj.cmdutils;
 import me.devtarix.tproj.Settings;
 
 import java.io.Console;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
+import static me.devtarix.tproj.Utils.log;
 
 public class CommandInterpreter {
-    private boolean active = true;
     private static CommandInterpreter commandInterpreter;
 
     private CommandInterpreter() {
         Console console = System.console();
 
         if (!Settings.getInstance().guiActive) {
-            while (active) {
+            while (Settings.getInstance().isCommandInterpreterActive()) {
                 System.out.println("Enter command");
                 String[] args = console.readLine().split(" ");
                 if (console == null) {
@@ -24,21 +22,17 @@ public class CommandInterpreter {
                 }
 
                 if (CommandRegistry.registry.containsKey(args[0])) {
-                    List<String> pass = new ArrayList<>();
 
-                    try {
-                        pass = Arrays.asList(args);
-                        pass.remove(0);
-                    }
-                    catch (IllegalArgumentException e) {
-                        System.out.println("Args length are " + pass.size());
-                    }
-
-                    if (pass.size() == 0) {
+                    if (args.length == 1) {
                         CommandRegistry.registry.get(args[0]).textCommand();
                     }
                     else {
-                        CommandRegistry.registry.get(args[0]).textCommand(pass);
+                        try  {
+                            CommandRegistry.registry.get(args[0]).textCommand(args);
+                        }
+                        catch (Exception e) {
+                            log(e.getMessage());
+                        }
                     }
                 }
                 else {
