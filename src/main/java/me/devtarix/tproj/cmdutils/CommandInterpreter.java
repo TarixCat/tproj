@@ -41,7 +41,7 @@ public class CommandInterpreter {
             }
         }
         else {
-            System.out.println("Not implemented. Exiting...");
+            System.out.println("Not function. Exiting...");
         }
     }
 
