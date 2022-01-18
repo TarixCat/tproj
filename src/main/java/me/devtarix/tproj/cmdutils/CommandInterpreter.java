@@ -7,7 +7,7 @@ import java.io.Console;
 import static me.devtarix.tproj.Utils.log;
 
 public class CommandInterpreter {
-    Console console = System.console();
+    final Console console = System.console();
     String[] args;
 
     public CommandInterpreter() {

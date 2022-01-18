@@ -6,7 +6,6 @@ import me.devtarix.tproj.extensions.ExtensionsProvider;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Lo");
         new ExtensionsProvider();
         new CommandProvider();
         ExtensionRegistry.ext(args);
