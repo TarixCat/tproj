@@ -7,48 +7,51 @@ import java.io.Console;
 import static me.devtarix.tproj.Utils.log;
 
 public class CommandInterpreter {
-    private static CommandInterpreter commandInterpreter;
+    Console console = System.console();
+    String[] args;
 
-    private CommandInterpreter() {
-        Console console = System.console();
-
+    public CommandInterpreter() {
         if (!Settings.getInstance().guiActive) {
             while (Settings.getInstance().isCommandInterpreterActive()) {
-                System.out.println("Enter command");
-                String[] args = console.readLine().split(" ");
-                if (console == null) {
-                    System.out.println("No console: non-interactive mode!");
-                    System.exit(0);
-                }
+                args = requestInput();
 
-                if (CommandRegistry.registry.containsKey(args[0])) {
-
-                    if (args.length == 1) {
-                        CommandRegistry.registry.get(args[0]).textCommand();
-                    }
-                    else {
-                        try  {
-                            CommandRegistry.registry.get(args[0]).textCommand(args);
-                        }
-                        catch (Exception e) {
-                            log(e.getMessage());
-                        }
-                    }
-                }
-                else {
-                    System.out.println("Command not found");
-                }
+                checkCommandValid();
             }
         }
         else {
-            System.out.println("Not function. Exiting...");
+            System.out.println("Not Currently Function. Exiting...");
         }
     }
 
-    public static CommandInterpreter getInstance() {
-        if (commandInterpreter == null) {
-            commandInterpreter = new CommandInterpreter();
+    private String[] requestInput() {
+        System.out.println("Enter command");
+        return console.readLine().split(" ");
+    }
+
+    private void tryCommandRegistryArgs() {
+        try  {
+            CommandRegistry.registry.get(args[0]).textCommand(args);
         }
-        return commandInterpreter;
+        catch (Exception e) {
+            log(e.getMessage());
+        }
+    }
+
+    private void processCommand() {
+        if (args.length == 1) {
+            CommandRegistry.registry.get(args[0]).textCommand();
+        }
+        else {
+            tryCommandRegistryArgs();
+        }
+    }
+
+    private void checkCommandValid() {
+        if (CommandRegistry.registry.containsKey(args[0])) {
+            processCommand();
+        }
+        else {
+            System.out.println("Command not found");
+        }
     }
 }
