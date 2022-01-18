@@ -11,15 +11,9 @@ public class CommandInterpreter {
     String[] args;
 
     public CommandInterpreter() {
-        if (!Settings.getInstance().guiActive) {
-            while (Settings.getInstance().isCommandInterpreterActive()) {
-                args = requestInput();
-
-                checkCommandValid();
-            }
-        }
-        else {
-            System.out.println("Not Currently Function. Exiting...");
+        while (Settings.getInstance().isCommandInterpreterActive()) {
+            args = requestInput();
+            checkCommandValid();
         }
     }
 
