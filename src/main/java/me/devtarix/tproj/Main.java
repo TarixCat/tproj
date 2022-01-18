@@ -10,6 +10,6 @@ public class Main {
         new ExtensionsProvider();
         new CommandProvider();
         ExtensionRegistry.ext(args);
-        CommandInterpreter.getInstance();
+        new CommandInterpreter();
     }
 }
