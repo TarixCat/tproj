@@ -5,6 +5,7 @@ public class Settings {
     public boolean commandInterpreterActive = true;
 
     private Settings() {
+
     }
 
     public static Settings getInstance() {
