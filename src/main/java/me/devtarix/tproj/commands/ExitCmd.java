@@ -1,9 +1,9 @@
 package me.devtarix.tproj.commands;
 
 import me.devtarix.tproj.Settings;
-import me.devtarix.tproj.cmdutils.Commands;
+import me.devtarix.tproj.cmdutils.Command;
 
-public class ExitCmd implements Commands {
+public class ExitCmd implements Command {
     public ExitCmd() {
         register("exit");
     }
@@ -12,6 +12,7 @@ public class ExitCmd implements Commands {
     @Override
     public void textCommand() {
         Settings.getInstance().setCommandInterpreterActive(false);
+
     }
 
     @Override
