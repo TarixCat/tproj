@@ -18,6 +18,7 @@ public class Config {
                 Properties prop = new Properties();
 
                 prop.setProperty("debug", "true");
+                prop.setProperty("ver", "1.1");
 
                 prop.store(output, null);
             } catch (IOException e) {
