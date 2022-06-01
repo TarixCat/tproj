@@ -12,7 +12,6 @@ public class ExitCmd implements Command {
     @Override
     public void textCommand() {
         Settings.getInstance().setCommandInterpreterActive(false);
-
     }
 
     @Override
