@@ -1,15 +1,13 @@
 package me.devtarix.tproj;
 
-import me.devtarix.tproj.cmdutils.CommandInterpreter;
-import me.devtarix.tproj.cmdutils.CommandProvider;
-import me.devtarix.tproj.extensions.ExtensionsProvider;
+import me.devtarix.tproj.utils.CommandInterpreter;
+import me.devtarix.tproj.utils.CommandProvider;
+import me.devtarix.tproj.utils.ExtensionRegistry;
+import me.devtarix.tproj.utils.ExtensionsProvider;
 
 public class Main {
     public static void main(String[] args) {
         new ExtensionsProvider();
-        Config.getConfig();
-
-        System.out.println("Debug: "+Config.getConfig().getProperty("debug"));
         new CommandProvider();
         ExtensionRegistry.ext(args);
         new CommandInterpreter();
