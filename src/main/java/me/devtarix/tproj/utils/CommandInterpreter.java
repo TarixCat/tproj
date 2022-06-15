@@ -1,4 +1,4 @@
-package me.devtarix.tproj.cmdutils;
+package me.devtarix.tproj.utils;
 
 import me.devtarix.tproj.Settings;
 

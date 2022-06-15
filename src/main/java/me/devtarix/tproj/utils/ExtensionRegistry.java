@@ -1,4 +1,4 @@
-package me.devtarix.tproj;
+package me.devtarix.tproj.utils;
 
 import java.util.HashMap;
 
