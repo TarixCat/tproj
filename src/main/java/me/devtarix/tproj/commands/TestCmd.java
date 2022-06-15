@@ -1,6 +1,6 @@
 package me.devtarix.tproj.commands;
 
-import me.devtarix.tproj.cmdutils.Command;
+import me.devtarix.tproj.utils.Command;
 
 import java.util.Arrays;
 
