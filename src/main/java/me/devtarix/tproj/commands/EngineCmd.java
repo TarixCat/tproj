@@ -1,11 +1,13 @@
 package me.devtarix.tproj.commands;
 
+import me.devtarix.tproj.Engine;
 import me.devtarix.tproj.utils.Command;
 
 import static me.devtarix.tproj.Utils.log;
 
 public class EngineCmd implements Command {
-    public boolean enabled;
+    public static boolean enabled;
+    Engine e = new Engine();
 
     public EngineCmd() {
         register("engine");
@@ -20,13 +22,14 @@ public class EngineCmd implements Command {
     public void textCommand(String[] args) {
         if(args[1].equals("status")) {
             log("Enabled: " +isEnabled());
+            log("Current value: " + e.i);
         }
         else if(args[1].equals("start")) {
             if(isEnabled()) {
                 log("Already enabled engine");
             } else if(!isEnabled()) {
                 log("Starting engine");
-                setEnabled(true);
+                engineEnable();
             } else {
                 log("Cannot reach this case as null. \n Exiting...");
                 System.exit(1);
@@ -36,12 +39,22 @@ public class EngineCmd implements Command {
             if(!isEnabled()) {
                 log("Engine is already off");
             } else if(isEnabled()) {
-                log("Stopping engine");
-                setEnabled(false);
+                log("Stopping engine " +e.i);
+                engineDisable();
             } else {
                 log("Cannot reach this case as null. \n Exiting...");
                 System.exit(1);
             }
+        }
+        else if(args[1].equals("display")) {
+            if(!e.isDisplay()) {
+                e.setDisplay(true);
+            } else if(e.isDisplay()) {
+                e.setDisplay(false);
+            } else {
+                log("Unreachable case: Ctrl+c is advised");
+            }
+
         }
         else {
             log("Subcommand "+args[1]+" doesn't exist");
@@ -54,5 +67,15 @@ public class EngineCmd implements Command {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public void engineEnable() {
+        setEnabled(true);
+        e.start();
+    }
+
+    public void engineDisable() {
+        setEnabled(false);
+        e.stop();
     }
 }
