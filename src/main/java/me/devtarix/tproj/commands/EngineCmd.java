@@ -54,7 +54,8 @@ public class EngineCmd implements Command {
             } else {
                 log("Unreachable case: Ctrl+c is advised");
             }
-
+        } else if (args[1].equals("reset")) {
+            e.reset();
         }
         else {
             log("Subcommand "+args[1]+" doesn't exist");

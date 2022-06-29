@@ -8,7 +8,7 @@ public class Engine implements Runnable {
     public Thread thread;
 
     public boolean run = false;
-    public static boolean display = false;
+    public boolean display = false;
 
     public int i = 0;
 
@@ -16,7 +16,7 @@ public class Engine implements Runnable {
     public void run() {
         while (run) {
             try {
-                Thread.sleep(250);
+                Thread.sleep(13);
             } catch (InterruptedException ex) {
                 throw new RuntimeException(ex);
             }
@@ -38,11 +38,15 @@ public class Engine implements Runnable {
         run = false;
     }
 
-    public static void setDisplay(boolean val) {
+    public void setDisplay(boolean val) {
         display = val;
     }
 
     public boolean isDisplay() {
         return display;
+    }
+
+    public void reset() {
+        i = 0;
     }
 }
