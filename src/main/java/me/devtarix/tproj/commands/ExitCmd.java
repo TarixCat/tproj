@@ -3,6 +3,8 @@ package me.devtarix.tproj.commands;
 import me.devtarix.tproj.Settings;
 import me.devtarix.tproj.utils.Command;
 
+import static me.devtarix.tproj.Utils.log;
+
 public class ExitCmd implements Command {
     public ExitCmd() {
         register("exit");
@@ -11,7 +13,11 @@ public class ExitCmd implements Command {
 
     @Override
     public void textCommand() {
-        Settings.getInstance().setCommandInterpreterActive(false);
+        if(EngineCmd.enabled) {
+            log("Please run: engine stop");
+        } else {
+            Settings.getInstance().setCommandInterpreterActive(false);
+        }
     }
 
     @Override
