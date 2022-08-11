@@ -19,10 +19,14 @@ public class Engine implements Runnable {
                 throw new RuntimeException(ex);
             }
             if (isDisplay()) {
-                log(Integer.toString(i));
+                log(Integer.toString(calculation(i)));
             }
             i += 1;
         }
+    }
+
+    public int calculation(int i) {
+        return i;
     }
 
     public void start() {
@@ -30,6 +34,7 @@ public class Engine implements Runnable {
         run = true;
         thread = new Thread(this);
         thread.start();
+        System.out.println("Started thread: " + thread.getName());
     }
 
     public void stop() {
