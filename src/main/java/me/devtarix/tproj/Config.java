@@ -1,20 +1,26 @@
 package me.devtarix.tproj;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class Config {
     private static Config config;
 
     Config() {
-        try (InputStream input = new FileInputStream("config.properties")) {
+        Path config = Paths.get("config.properties");
+        try (InputStream input = Files.newInputStream(config)) {
             Properties prop = new Properties();
 
             prop.load(input);
         } catch (IOException ex) {
             System.out.println("Config not found, generating default config!");
 
-            try (OutputStream output = new FileOutputStream("config.properties")) {
+            try (OutputStream output = Files.newOutputStream(config)) {
                 Properties prop = new Properties();
 
                 prop.setProperty("debug", "true");
@@ -38,7 +44,7 @@ public class Config {
     public String getProperty(String key) {
         Properties prp = new Properties();
 
-        try (InputStream input = new FileInputStream("config.properties")) {
+        try (InputStream input = Files.newInputStream(Paths.get("config.properties"))) {
             prp.load(input);
         } catch (IOException e) {
             System.out.println("Failed to load property file");
