@@ -1,17 +1,16 @@
 package me.devtarix.tproj.commands;
 
-import me.devtarix.tproj.Settings;
+import me.devtarix.tproj.Config;
 import me.devtarix.tproj.utils.Command;
 
-public class ExitCmd implements Command {
-    public ExitCmd() {
-        register("exit");
+public class OpenAICmd implements Command {
+    public OpenAICmd() {
+        register("gpt");
     }
-
 
     @Override
     public void textCommand() {
-            Settings.getInstance().setCommandInterpreterActive(false);
+        String APIKEY = Config.getConfig().getProperty("OPENAI_API_KEY");
     }
 
     @Override
