@@ -1,7 +1,6 @@
 package me.devtarix.tproj.utils;
 
 import me.devtarix.tproj.Config;
-import me.devtarix.tproj.commands.EngineCmd;
 import me.devtarix.tproj.commands.ExitCmd;
 import me.devtarix.tproj.commands.TestCmd;
 
@@ -13,7 +12,6 @@ public class CommandProvider {
             new TestCmd();
         }
         new ExitCmd();
-        new EngineCmd();
 
         log("Loaded "+CommandRegistry.registry.size() + " commands");
     }
