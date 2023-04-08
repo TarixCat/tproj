@@ -1,5 +1,7 @@
 plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'java'
+    id 'idea'
 }
 
 group 'me.devtarix'
@@ -10,7 +12,7 @@ repositories {
 }
 
 dependencies {
-
+    implementation 'com.theokanning.openai-gpt3-java:client:0.9.0'
 }
 
 jar {
