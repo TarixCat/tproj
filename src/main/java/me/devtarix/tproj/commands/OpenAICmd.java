@@ -65,7 +65,7 @@ public class OpenAICmd implements Command {
             case "n":
                 int j = Integer.parseInt(cQuery("n"));
                 if (j>1) {
-                    System.out.println("You are warned that any value over 1 exponentially increases token count");
+                    System.out.println("You are warned that any value over 1 linearly increases token count");
                 }
                 n=j;
                 break;
